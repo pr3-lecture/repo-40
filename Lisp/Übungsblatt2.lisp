@@ -69,7 +69,26 @@
 (setf b (getMin x))
 (print b)
 
-;Hier Remove
+
+
+(defun removeVal (tree v)
+  (cond
+		((null (car tree))
+        nil)
+    ((and (= v (car tree)) (= (height tree) 1))
+        nil)
+    ((and (= v (car tree)) (null (caddr tree)) )
+        (list (getMax (cadr tree)) (removeVal (cadr tree) (getMax (cadr tree))) nil))
+			((= v (car tree))
+        (list (getMin (caddr tree)) (cadr tree) (removeVal (caddr tree) (getMin (caddr tree)))))
+    ((< val (car tree))
+        (list (car tree) (removeVal (cadr tree) v) (caddr tree)))
+    ((> val (car tree))
+        (list (car tree) (cadr tree) (removeVal (caddr tree) v)))))
+
+
+
+
 
 
 (defun isEmpty (tree)
