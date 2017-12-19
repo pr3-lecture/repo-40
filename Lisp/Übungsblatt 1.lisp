@@ -5,12 +5,11 @@
 ;a)
 (defun rotiere(liste)
 (cond
-  ((null (cdr liste)) liste)
+  ((null (cdr liste)) liste) ;cdr rest der liste /
   (t
-   (cons (first (last liste))
+   (cons (first (last liste)) ;cons neues element an listenanfang
            (append (butlast (rest liste))
-                   (list (first liste)))))
-  ))
+                   (list (first liste)))))))
 
   ;b)
 (defun neues-vorletztes (x liste)
@@ -22,9 +21,7 @@
     (cond
       ((null liste) 0)
       (t
-       (+ 1 (my-length (cdr liste))))
-      )
-  )
+       (+ 1 (my-length (cdr liste))))))
 
 ;d)
 (defun my-lengthR (liste)
