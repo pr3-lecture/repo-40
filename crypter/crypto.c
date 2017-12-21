@@ -6,6 +6,12 @@
 //char k = z + 'A' - 1;
 
 int encrypt(KEY key, const char* input, char* output) {
+	if(key.type == 1) {
+
+	}
+		else {
+			
+		}
 
 	return 0;
 }
