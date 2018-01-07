@@ -2,3 +2,4 @@ output/
 *.o
 *decrypt
 *encrypt
+*test
