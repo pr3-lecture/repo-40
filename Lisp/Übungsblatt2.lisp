@@ -5,6 +5,7 @@
 (defun left-branch (tree)
 (cadr tree))
 
+
 (defun right-branch (tree)
 (caddr tree))
 
@@ -87,10 +88,6 @@
         (list (car tree) (cadr tree) (removeVal (caddr tree) v)))))
 
 
-
-
-
-
 (defun isEmpty (tree)
   (null (car tree)))
 
@@ -108,12 +105,21 @@
 (print d)
 
 
-(defun printlevelorder (tree)
-    (levelorder (list tree))
-)
-(defun levelOrder (tree)
-    (loop while (not (null tree))
-      do
-        (setq node (car tree) tree (cdr tree))
-        (if (not (null (car node)))(print (car node)))
-        (setq tree (append tree (cdr node)))))
+
+;LEVELORDER
+(defun printLevel (tree level)
+    (if (null tree)
+        NIL
+        (cond
+            ((= level 1)
+                (if (not (null tree))
+                (print (if (listp tree) (car tree) tree))))
+            ((> level 1)
+                (if  (listp tree)
+                    (printLevel (left-branch tree) (- level 1)))
+                (if  (listp tree)
+                    (printLevel (right-branch tree) (- level 1)))))))
+
+(defun printLevelorder (tree)
+    (loop for x from 1 to (+ 1 (height tree))
+         do (printLevel tree x)))
