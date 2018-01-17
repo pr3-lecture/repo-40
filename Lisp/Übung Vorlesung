@@ -1,0 +1,9 @@
+;Gesucht:
+;Funktion my-if ^= if
+;(my-if   expr    true-branch     flase-branch)
+;	wenn expr t   dann true-branch
+; wenn expr nill dann false-branch
+
+(defun my-if (expr true-branch false-branch)
+	(cond (expr true-branch)
+			(t false-branch)))

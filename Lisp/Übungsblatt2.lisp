@@ -92,11 +92,14 @@
   (null (car tree)))
 
 
-(defun add-all (tree otherTree)
-    (cond
-        ((car otherTree) (add-all tree (left-branch otherTree))
-                         (add-all tree (right-branch otherTree))
-                         (insert tree (car otherTree)))))
+	(defun addAll (tree otherTree)
+	  (setq otherTree (printLevelorder otherTree))
+	  (loop
+	    (setq tree (insert tree (car otherTree)))
+	    (setq otherTree (cdr otherTree))
+	    (when (endp otherTree) (return tree))
+	  )
+	)
 
 
 (setf c (insert-from-file nil "list2.txt"))
@@ -116,9 +119,9 @@
                 (print (if (listp tree) (car tree) tree))))
             ((> level 1)
                 (if  (listp tree)
-                    (printLevel (left-branch tree) (- level 1)))
+                    (printLevel (cadr tree) (- level 1)))
                 (if  (listp tree)
-                    (printLevel (right-branch tree) (- level 1)))))))
+                    (printLevel (caddr tree) (- level 1)))))))
 
 (defun printLevelorder (tree)
     (loop for x from 1 to (+ 1 (height tree))
